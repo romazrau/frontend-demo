@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        /* 詳細教學 */
+        /* https://www.oxxostudio.tw/articles/201803/css-animation.html */
+
+
+        .logo1 {
+            animation-name: anima-logo1;
+            /* 動畫名稱 找@keyframes */
+            animation-iteration-count: infinite;
+            /* 動畫次數 1、2、.. infinite無限 */
+            animation-duration: 3s;
+            /* 動畫時間 秒(s) */
+            animation-timing-function: linear;
+            /* 動畫加速度函式 linear線性、ease、ease-in、 .. */
+            animation-delay: 1s;
+            /* 動畫撥放前的延遲秒數 */
+            height: 30vmin;
+            color: black;
+        }
+
+        @keyframes anima-logo1 {
+            0% {
+                color: black;
+            }
+
+            33% {
+                color: brown;
+            }
+
+            67% {
+                color: rgb(79, 42, 165);
+            }
+
+            100% {
+                color: black;
+            }
+        }
+
+
+        .logo2 {
+            animation: anima-logo2 infinite 3s linear;
+            /* 動畫一條龍寫法 名稱 次數 秒數 加速度方法 */
+            height: 30vmin;
+        }
+
+        @keyframes anima-logo2 {
+            0% {
+                transform: rotate(0deg);
+                /*  transform: 變形 */
+            }
+
+            /* rotate: 選轉方法  deg: 順時鐘選轉角度 */
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+
+
+        .logo3 {
+            animation: anima-logo3 infinite 3s linear;
+            height: 30vmin;
+        }
+
+        @keyframes anima-logo3 {
+            0% {
+                transform: rotate(0deg) scale(1);
+                /* scale: 收放方法 */
+            }
+
+            50% {
+                transform: rotate(180deg) scale(0.5);
+            }
+
+            100% {
+                transform: rotate(360deg) scale(1);
+            }
+        }
+
+
+
+        .logo4 {
+            animation: anima-logo4 infinite 3s linear;
+            animation-play-state: running;
+            /* 動畫撥放 (預設狀態) */
+            height: 30vmin;
+        }
+
+        .logo4:hover {
+            animation-play-state: paused;
+            /* 動畫暫停  */
+        }
+
+        @keyframes anima-logo4 {
+            0% {
+                transform: rotate(0deg) scale(1);
+                /* scale: 收放方法 */
+            }
+
+            50% {
+                transform: rotate(180deg) scale(0.5);
+            }
+
+            100% {
+                transform: rotate(360deg) scale(1);
+            }
+        }
+
+
+
+        .logo5 {
+            animation: anima-logo5 1 4s ease-in-out;
+            animation-play-state: paused;
+            min-height: 5rem;
+            width: 100vw;
+            background-color: cornflowerblue;
+        }
+
+        .active {
+            animation-play-state: running;
+        }
+
+        @keyframes anima-logo5 {
+            0% {
+                width: 0vw;
+            }
+
+            50% {
+                width: 70vw;
+            }
+
+            100% {
+                width: 100vw;
+            }
+        }
+
+
+        .logo6 {
+            animation: anima-logo6 1 3s ease;
+            animation-delay: 4s;                  /* 延遲等 Logo 5 動畫完在開始 */
+            animation-play-state: paused;      
+            animation-fill-mode: forwards;       /* 結束後留在最後一格 (預設視第一個)*/
+            height: 0vh;
+            font-size: 0;
+            width: 100vw;
+            background-color: cornflowerblue;
+        }
+
+        @keyframes anima-logo6 {
+            0% {
+                height: 0vh;
+                background-color: cornflowerblue;
+                font-size: 0;
+            }
+
+            100% {
+                height: 100vh;
+                background-color: rgb(237, 150, 100);
+                font-size: 3rem;
+            }
+        }
+
+        .active {
+            animation-play-state: running;
+        }
+
+
+        footer {
+            height: 50vh;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>1沒有用到變形的</h3>
+    <svg class="logo1" width="10em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-circle-fill"
+        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd"
+            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-8.354 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L9.793 7.5H5a.5.5 0 0 0 0 1h4.793l-2.147 2.146z" />
+    </svg>
+
+
+
+    <h3>2選轉</h3>
+    <svg class="logo2" width="10em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-circle-fill"
+        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd"
+            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-8.354 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L9.793 7.5H5a.5.5 0 0 0 0 1h4.793l-2.147 2.146z" />
+    </svg>
+
+    <h3>3選轉 + 收放</h3>
+    <svg class="logo3" width="10em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-circle-fill"
+        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd"
+            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-8.354 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L9.793 7.5H5a.5.5 0 0 0 0 1h4.793l-2.147 2.146z" />
+    </svg>
+
+    <h3>4放上來會暫停</h3>
+    <svg class="logo4" width="10em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-circle-fill"
+        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd"
+            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-8.354 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L9.793 7.5H5a.5.5 0 0 0 0 1h4.793l-2.147 2.146z" />
+    </svg>
+
+    <h3>5組合一下</h3>
+    <button id="btn_startLoading">start loading</button>
+    <div class="logo5">
+        <div class="logo6">Hello world</div>
+    </div>
+
+
+
+
+    <footer></footer>
+    <script>
+        document.querySelector('#btn_startLoading').addEventListener(
+            'click',
+            () => {
+                document.querySelector('.logo5').classList.add('active');
+                document.querySelector('.logo6').classList.add('active');
+            }
+        )
+    </script>
+
+</body>
+
+</html>
