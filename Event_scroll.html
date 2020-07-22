@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .wrapper {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-around;
+        }
+
+        .right {
+            height: 200vh;
+            flex-grow: 1;
+            background-color: bisque;
+        }
+
+
+        .center {
+            height: 20vh;
+            width: 30vw;
+            background-color: rgb(95, 160, 111);
+        }
+
+        .left {
+            height: 20vh;
+            width: 30vw;
+            background-color: cadetblue;
+
+            transition: all 0.5s;  
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <div class="right">這些都是flex內的色塊</div>
+        <div class="center">這個要漂浮</div>
+        <div class="left">這個要漂浮 有css transition</div>
+
+    </div>
+
+
+    <script>
+
+        function boxMove(y) {
+            console.log(y);
+            box = document.querySelector('.left')
+            box.style.marginTop = `${y}px`;
+        }
+
+
+        //簡易寫法
+        window.addEventListener('scroll', function (e) {
+            boxMove(window.pageYOffset);
+        });
+
+
+        //降低瀏覽器負擔寫法
+        // https://developer.mozilla.org/zh-TW/docs/Web/API/Document/scroll_event
+        function boxMove2(y) {
+            console.log(y);
+            box = document.querySelector('.center')
+            box.style.marginTop = `${y}px`;
+        }
+
+
+        var last_known_scroll_position = 0;
+        var ticking = false;
+
+        window.addEventListener('scroll', function (e) {
+            last_known_scroll_position = window.scrollY;
+            if (!ticking) {
+                window.requestAnimationFrame(function () {
+                    boxMove2(last_known_scroll_position);
+                    ticking = false;
+                });
+            }
+            ticking = true;
+        });
+
+    </script>
+
+</body>
+
+</html>
