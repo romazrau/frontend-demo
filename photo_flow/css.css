@@ -16,8 +16,6 @@
 .photo_flow_card{
     position: relative;
     margin-bottom: 2rem;
-
-
 }
 
 
@@ -27,3 +25,24 @@
 }
 
 
+.photo_flow_card_wrapper{
+    opacity:0;
+    width: 100%;
+    height: 100%;
+    background-color: #00000017;
+    position: absolute;
+    top: 0;
+}
+
+.photo_flow_card_wrapper:hover {
+    opacity:1;
+}
+
+.photo_flow_card_msg{
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.5rem 0.5rem;
+    border-radius: 2rem;
+    background-color: #ffffff;
+}
